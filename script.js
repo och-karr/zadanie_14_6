@@ -13,16 +13,11 @@ var Counter = React.createClass({
 
     getInitialState: function() { // poczatkowy stan komponentu
         return {
-            counter: 0,
-            counterSec: 0
+            counter: 0
         };
     },
 
     componentDidMount() {
-        setInterval(
-            () => this.incrementBoth(),
-            5000
-        ),
         console.log('componentDidMount() wywoływana po metodzie render. Na przykład może być konieczne wprowadzenie zmian w naszym obecnym stanie w zależności od tego jak wyświetlane są elementy.')
     },
 
@@ -48,12 +43,6 @@ var Counter = React.createClass({
         console.log('componentWillUnmount() jest wywoływana bezpośrednio przed odmontowaniem i zniszczeniem komponentu. W tej metodzie wykonywane jest niezbędne oczyszczanie, takie jak unieważnianie liczników czasu, anulowanie żądań sieciowych.')
     },
 
-    incrementBoth: function() {
-        this.setState({
-            counter: this.state.counter + 2,
-            counterSec: this.state.counter + 2
-        });
-    },
 
     increment: function() { //wartość stanu zmienia się poprzez inkrementację
         this.setState({ //stan ustawiamy za pomocą metody setState
@@ -67,26 +56,18 @@ var Counter = React.createClass({
         });
     },
 
-    pomnoz: function() {
-        this.setState({
-            counterSec: this.state.counter * 2
-        });
-    },
-
-    podziel: function() {
-        this.setState({
-            counterSec: this.state.counter / 2
-        });
-    },
-    
     render: function() {
-        return React.createElement('div', {className: 'Elem'},
-            React.createElement('button', {onClick: this.increment}, 'Powiększ +1'),
-            React.createElement('button', {onClick: this.decrement}, 'Zmniejsz -1'),
-            React.createElement('div', {}, 'Add Counter: ' + this.state.counter),
-            React.createElement('button', {onClick: this.pomnoz}, 'Pomnóż x2'),
-            React.createElement('button', {onClick: this.podziel}, 'Podziel /2'),
-            React.createElement('div', {}, 'Multiple Counter: ' + this.state.counterSec)
+        return React.createElement('div', {}, 
+            React.createElement('div', {className: 'Elem1'},
+                React.createElement('button', {onClick: this.increment}, 'Powiększ +1'),
+                React.createElement('button', {onClick: this.decrement}, 'Zmniejsz -1'),
+                React.createElement('div', {}, 'Counter: ' + this.state.counter),
+            ),
+            React.createElement('div', {className: 'Elem2'},
+                React.createElement('button', {onClick: this.increment}, 'Powiększ +1'),
+                React.createElement('button', {onClick: this.decrement}, 'Zmniejsz -1'),
+                React.createElement('div', {}, 'Counter: ' + this.state.counter),
+            )
         )
     }
 
