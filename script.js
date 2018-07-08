@@ -57,21 +57,22 @@ var Counter = React.createClass({
     },
 
     render: function() {
-        return React.createElement('div', {}, 
-            React.createElement('div', {className: 'Elem1'},
+        return React.createElement('div', {className: 'Elem1'},
                 React.createElement('button', {onClick: this.increment}, 'Powiększ +1'),
                 React.createElement('button', {onClick: this.decrement}, 'Zmniejsz -1'),
-                React.createElement('div', {}, 'Counter: ' + this.state.counter),
-            ),
-            React.createElement('div', {className: 'Elem2'},
-                React.createElement('button', {onClick: this.increment}, 'Powiększ +1'),
-                React.createElement('button', {onClick: this.decrement}, 'Zmniejsz -1'),
-                React.createElement('div', {}, 'Counter: ' + this.state.counter),
+                React.createElement('div', {}, 'Counter: ' + this.state.counter)
             )
-        )
     }
 
 });
 
-var app = React.createElement(Counter);
-ReactDOM.render(app, document.getElementById('app'));
+// var app1 = React.createElement(Counter);
+// var app2 = React.createElement(Counter);
+
+var element = React.createElement('div', {},
+React.createElement(Counter),
+React.createElement(Counter)
+)
+
+ReactDOM.render(element, document.getElementById('app'));
+
